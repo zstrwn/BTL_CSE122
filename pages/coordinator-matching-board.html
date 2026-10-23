@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bảng ghép người | VolunteerLink</title>
+<script>document.documentElement.dataset.theme=localStorage.getItem('vl_theme')||''</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/responsive.css"></head>
+<body data-page="coordinator-matching-board" data-role="coordinator" data-base="../">
+<a class="skip" href="#main">Bỏ qua đến nội dung chính</a>
+<header class="topbar" id="topbar"></header>
+<div class="shell"><nav class="sidebar" id="sidebar" aria-label="Điều hướng chính"></nav>
+<main class="main" id="main" tabindex="-1">
+<div class="page-h"><div><h1>Bảng ghép người</h1><p class="mut">Chọn ca cần người, xem ứng viên xếp hạng và xếp trực tiếp hoặc nhờ AI gợi ý.</p></div></div>
+<form id="flt" class="toolbar card" role="search"><div class="field grow"><label for="q">Lọc ca</label><input id="q" name="q" type="search" placeholder="Tên hoạt động"></div><button id="run-ai" class="btn primary" type="button">✨ Nhờ AI gợi ý đội hình</button></form><div class="cols"><section id="shifts" aria-label="Ca cần ghép"></section><section class="card" id="cand" aria-label="Chi tiết ca"></section></div><section id="ai-root" style="margin-top:14px" aria-label="Kết quả AI"></section>
+</main></div>
+<div id="toast-region" aria-live="polite"></div>
+<script src="../assets/data/seed.js"></script><script src="../js/modules/utils.js"></script><script src="../js/modules/store.js"></script><script src="../js/modules/api.js"></script><script src="../js/modules/validators.js"></script><script src="../js/modules/ui.js"></script><script src="../js/modules/auth.js"></script><script src="../js/modules/layout.js"></script><script src="../js/modules/queries.js"></script><script src="../js/modules/ai.js"></script><script src="../js/modules/coordinator.js"></script>
+<script src="../js/main.js"></script></body></html>
