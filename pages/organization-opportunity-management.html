@@ -10,9 +10,83 @@
 <header class="topbar" id="topbar"></header>
 <div class="shell"><nav class="sidebar" id="sidebar" aria-label="Điều hướng chính"></nav>
 <main class="main" id="main" tabindex="-1">
-<div class="page-h"><div><h1>Quản lý hoạt động</h1><p class="mut">Tạo hoạt động, gửi duyệt, đóng hoặc lưu trữ.</p></div><button id="new" class="btn primary" type="button">+ Tạo hoạt động</button></div>
-<form id="flt" class="toolbar card" role="search"><div class="field grow"><label for="q">Tìm hoạt động</label><input id="q" name="q" type="search" placeholder="Tên hoặc địa điểm"></div><div class="field"><label for="status">Trạng thái</label><select id="status" name="status"><option value="">Mọi trạng thái</option><option value="draft">Nháp</option><option value="open">Đang mở</option><option value="closed">Đã đóng</option><option value="archived">Lưu trữ</option></select></div></form><section id="list" aria-live="polite" aria-label="Kết quả"></section>
+
+  <div class="page-h">
+    <div>
+      <h1>Quản lý hoạt động</h1>
+      <p class="mut">Tạo hoạt động, gửi duyệt, đóng hoặc lưu trữ.</p>
+    </div>
+    <button id="new" class="btn primary" type="button">+ Tạo hoạt động</button>
+  </div>
+
+  <form id="flt" class="toolbar card" role="search">
+    <div class="field grow">
+      <label for="q">Tìm hoạt động</label>
+      <input id="q" name="q" type="search" placeholder="Tên hoặc địa điểm">
+    </div>
+    <div class="field">
+      <label for="flt-status">Trạng thái</label>
+      <select id="flt-status" name="status">
+        <option value="">Mọi trạng thái</option>
+        <option value="draft">Nháp</option>
+        <option value="open">Đang mở</option>
+        <option value="closed">Đã đóng</option>
+        <option value="archived">Lưu trữ</option>
+      </select>
+    </div>
+  </form>
+
+  <section id="state-box" aria-live="polite" aria-label="Trạng thái danh sách"></section>
+
+  <div id="table-box" class="tbl-wrap" hidden>
+    <table class="stack">
+      <caption class="sr">Danh sách hoạt động của tổ chức</caption>
+      <thead>
+        <tr>
+          <th scope="col">Hoạt động</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Ca / Đăng ký</th>
+          <th scope="col">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <template id="tpl-opp">
+    <div>
+      <div class="field">
+        <label for="o-title">Tên hoạt động</label>
+        <input id="o-title" name="title" type="text" maxlength="100">
+      </div>
+      <div class="field">
+        <label for="o-cat">Lĩnh vực</label>
+        <select id="o-cat" name="categoryId"></select>
+      </div>
+      <div class="field">
+        <label for="o-loc">Địa điểm</label>
+        <input id="o-loc" name="location" type="text">
+      </div>
+      <div class="field">
+        <label for="o-desc">Mô tả (20–500 ký tự)</label>
+        <textarea id="o-desc" name="description" rows="4"></textarea>
+      </div>
+      <fieldset>
+        <legend>Kỹ năng yêu cầu</legend>
+        <div class="checks" id="o-skills"></div>
+      </fieldset>
+      <div class="field">
+        <label for="o-status">Trạng thái</label>
+        <select id="o-status" name="status">
+          <option value="draft">Nháp (chưa công khai)</option>
+          <option value="open">Gửi duyệt &amp; mở đăng ký</option>
+        </select>
+        <div class="hint">Hoạt động mở sẽ được quản trị viên kiểm duyệt trước khi hiển thị.</div>
+      </div>
+    </div>
+  </template>
+
 </main></div>
 <div id="toast-region" aria-live="polite"></div>
-<script src="../assets/data/seed.js"></script><script src="../js/modules/utils.js"></script><script src="../js/modules/store.js"></script><script src="../js/modules/api.js"></script><script src="../js/modules/validators.js"></script><script src="../js/modules/ui.js"></script><script src="../js/modules/auth.js"></script><script src="../js/modules/layout.js"></script><script src="../js/modules/queries.js"></script><script src="../js/modules/ai.js"></script><script src="../js/modules/organization.js"></script>
+<script src="../assets/data/seed.js"></script><script src="../js/modules/utils.js"></script><script src="../js/modules/store.js"></script><script src="../js/modules/api.js"></script><script src="../js/modules/validators.js"></script><script src="../js/modules/ui.js"></script><script src="../js/modules/auth.js"></script><script src="../js/modules/layout.js"></script><script src="../js/modules/queries.js"></script><script src="../js/modules/ai.js"></script><script src="../js/modules/organization-common.js"></script><script src="../js/modules/organization-opportunity.js"></script>
 <script src="../js/main.js"></script></body></html>
