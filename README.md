@@ -10,7 +10,7 @@ Chọn 1 trong 4 vai trò, tài khoản demo được điền sẵn (mật khẩ
 |---|---|---|
 | Tình nguyện viên | lan.nguyen@vl.demo | Tìm cơ hội |
 | Tổ chức xã hội | org.xanh@vl.demo | Quản lý hoạt động |
-| Điều phối viên | coord@vl.demo | Bảng điều khiển nguồn lực |
+| Điều phối viên | ngduykhanh0201@gmail.com | Bảng điều khiển nguồn lực |
 | Quản trị viên | admin@vl.demo | Kiểm duyệt |
 
 Đăng nhập sai vai trò sẽ báo lỗi; truy cập trang của vai trò khác sẽ chuyển tới `403.html`.
