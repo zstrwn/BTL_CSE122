@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Danh sách tình nguyện viên | VolunteerLink</title>
+<script>document.documentElement.dataset.theme=localStorage.getItem('vl_theme')||''</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/responsive.css"></head>
+<body data-page="organization-volunteer-roster" data-role="organization" data-base="../">
+<a class="skip" href="#main">Bỏ qua đến nội dung chính</a>
+<header class="topbar" id="topbar"></header>
+<div class="shell"><nav class="sidebar" id="sidebar" aria-label="Điều hướng chính"></nav>
+<main class="main" id="main" tabindex="-1">
+
+  <div class="page-h">
+    <div>
+      <h1>Danh sách tình nguyện viên</h1>
+      <p class="mut">Duyệt đăng ký, ghi nhận giờ và quản lý người tham gia từng ca.</p>
+    </div>
+    <div class="row">
+      <button id="export" class="btn" type="button">Xuất CSV</button>
+      <button id="add" class="btn primary" type="button">+ Thêm TNV</button>
+    </div>
+  </div>
+
+  <form id="flt" class="toolbar card" role="search">
+    <div class="field grow">
+      <label for="q">Tìm theo tên</label>
+      <input id="q" name="q" type="search" placeholder="Tên tình nguyện viên">
+    </div>
+    <div class="field">
+      <label for="shift">Ca</label>
+      <select id="shift" name="shift"><option value="">Tất cả ca</option></select>
+    </div>
+    <div class="field">
+      <label for="flt-status">Trạng thái</label>
+      <select id="flt-status" name="status">
+        <option value="">Mọi trạng thái</option>
+        <option value="pending">Chờ duyệt</option>
+        <option value="confirmed">Đã xác nhận</option>
+        <option value="completed">Hoàn thành</option>
+        <option value="no_show">Vắng mặt</option>
+        <option value="rejected">Bị từ chối</option>
+        <option value="cancelled">Đã hủy</option>
+      </select>
+    </div>
+  </form>
+
+  <section id="state-box" aria-live="polite" aria-label="Trạng thái danh sách"></section>
+
+  <div id="table-box" class="tbl-wrap" hidden>
+    <table class="stack">
+      <caption class="sr">Danh sách tình nguyện viên theo ca</caption>
+      <thead>
+        <tr>
+          <th scope="col">Tình nguyện viên</th>
+          <th scope="col">Ca</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <template id="tpl-add">
+    <div>
+      <div class="field">
+        <label for="r-vol">Tình nguyện viên</label>
+        <select id="r-vol" name="vol"></select>
+      </div>
+      <div class="field">
+        <label for="r-shift">Ca</label>
+        <select id="r-shift" name="shift"></select>
+      </div>
+    </div>
+  </template>
+
+  <template id="tpl-hours">
+    <div class="field">
+      <label for="r-hours">Số giờ đóng góp</label>
+      <input id="r-hours" name="hours" type="number" step="0.5" min="0.5" max="24">
+      <div class="hint">Từ 0,5 đến 24 giờ.</div>
+    </div>
+  </template>
+
+</main></div>
+<div id="toast-region" aria-live="polite"></div>
+<script src="../assets/data/seed.js"></script><script src="../js/modules/utils.js"></script><script src="../js/modules/store.js"></script><script src="../js/modules/api.js"></script><script src="../js/modules/validators.js"></script><script src="../js/modules/ui.js"></script><script src="../js/modules/auth.js"></script><script src="../js/modules/layout.js"></script><script src="../js/modules/queries.js"></script><script src="../js/modules/ai.js"></script><script src="../js/modules/organization-common.js"></script><script src="../js/modules/organization-roster.js"></script>
+<script src="../js/main.js"></script></body></html>
