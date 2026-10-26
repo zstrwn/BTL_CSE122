@@ -1,78 +1,70 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <title>Kiểm duyệt nội dung | VolunteerLink</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kiểm duyệt nội dung | VolunteerLink</title>
 
-    <script>
-      document.documentElement.dataset.theme =
-        localStorage.getItem("vl_theme") || "";
-    </script>
+  <script>document.documentElement.dataset.theme=localStorage.getItem('vl_theme')||''</script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/responsive.css" />
-  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-page="admin-moderation" data-role="admin" data-base="../">
+  <a class="skip" href="#main">Bỏ qua đến nội dung chính</a>
 
-  <body data-page="admin-moderation" data-role="admin" data-base="../">
-    <a class="skip" href="#main">Bỏ qua đến nội dung chính</a>
+  <header class="topbar" id="topbar"></header>
 
-    <header class="topbar" id="topbar"></header>
+  <div class="shell">
+    <nav class="sidebar" id="sidebar" aria-label="Điều hướng chính"></nav>
 
-    <div class="shell">
-      <nav class="sidebar" id="sidebar" aria-label="Điều hướng chính"></nav>
+    <main class="main" id="main" tabindex="-1">
+      <div class="page-h">
+        <div>
+          <h1>Kiểm duyệt nội dung</h1>
+          <p class="mut">Phê duyệt hoạt động mới và xử lý báo cáo vi phạm từ cộng đồng.</p>
+        </div>
+        <button id="new" class="btn primary" type="button">+ Tạo báo cáo</button>
+      </div>
 
-      <main class="main" id="main" tabindex="-1">
-        <div class="page-h">
-          <div>
-            <h1>Kiểm duyệt nội dung</h1>
-            <p class="mut">
-              Phê duyệt hoạt động mới và xử lý báo cáo vi phạm từ cộng đồng.
-            </p>
-          </div>
+      <div id="tabs" class="tabs" role="tablist" aria-label="Loại nội dung kiểm duyệt"></div>
 
-          <button id="new" class="btn primary" type="button">
-            Tạo mới
-          </button>
+      <form id="flt" class="toolbar card" role="search">
+        <div class="field grow">
+          <label for="q">Tìm kiếm</label>
+          <input id="q" name="q" type="search" placeholder="Tên đối tượng hoặc lý do">
         </div>
 
-        <div
-          id="tabs"
-          class="tabs"
-          role="tablist"
-          aria-label="Loại nội dung kiểm duyệt"
-        ></div>
+        <div class="field">
+          <label for="flt-status">Trạng thái báo cáo</label>
+          <select id="flt-status" name="status">
+            <option value="">Mọi trạng thái</option>
+            <option value="open">Đang mở</option>
+            <option value="resolved">Đã xử lý</option>
+            <option value="dismissed">Bác bỏ</option>
+          </select>
+        </div>
+      </form>
 
-        <form id="flt" class="toolbar card" role="search">
-          <div class="field grow">
-            <label for="q">Tìm kiếm</label>
-            <input
-              id="q"
-              name="q"
-              type="search"
-              placeholder="Tên đối tượng hoặc lý do"
-            />
-          </div>
-        </form>
+      <section id="list" aria-live="polite" aria-label="Kết quả"></section>
+    </main>
+  </div>
 
-        <section id="list" aria-live="polite" aria-label="Kết quả"></section>
-      </main>
-    </div>
+  <div id="toast-region" aria-live="polite"></div>
 
-    <div id="toast-region" aria-live="polite"></div>
-
-    <script src="../assets/data/seed.js"></script>
-    <script src="../js/modules/utils.js"></script>
-    <script src="../js/modules/store.js"></script>
-    <script src="../js/modules/api.js"></script>
-    <script src="../js/main.js"></script>
-  </body>
+  <script src="../assets/data/seed.js"></script>
+  <script src="../js/modules/utils.js"></script>
+  <script src="../js/modules/store.js"></script>
+  <script src="../js/modules/api.js"></script>
+  <script src="../js/modules/validators.js"></script>
+  <script src="../js/modules/ui.js"></script>
+  <script src="../js/modules/auth.js"></script>
+  <script src="../js/modules/layout.js"></script>
+  <script src="../js/modules/queries.js"></script>
+  <script src="../js/modules/ai.js"></script>
+  <script src="../js/modules/admin-moderation.js"></script>
+  <script src="../js/main.js"></script>
+</body>
 </html>
