@@ -1,8 +1,10 @@
-
-@media (max-width: 200%) {
-  .menu-btn { display: inline-block; }
-  .who { display: none; }
-
+@media (max-width:1000px) {
+  .menu-btn {
+    display: inline-block;
+  }
+  .who {
+    display: none;
+  }
   .sidebar {
     position: fixed;
     left: 0;
@@ -10,12 +12,13 @@
     bottom: 0;
     height: auto;
     z-index: 40;
-    transform: translateX(-102%);   /* đẩy ra ngoài màn hình */
+    transform: translateX(-102%);
     transition: transform .2s;
     box-shadow: var(--sh);
   }
-  .sidebar.open { transform: none; } 
-
+  .sidebar.open {
+    transform: none;
+  }
   .scrim.on {
     display: block;
     position: fixed;
@@ -23,24 +26,88 @@
     background: rgba(10,25,18,.45);
     z-index: 35;
   }
-
+  .cols {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* Tablet (<= 768px) */
-@media (max-width: 768px) {
-  .role-chip { display: none; }
-  .who { display: none; }
-  h1 { font-size: 1.5rem; }
-  .main { padding: 16px 12px 48px; }
+@media (max-width:760px) {
+  .auth {
+    grid-template-columns: 1fr;
+  }
+  .auth-l {
+    padding: 28px 20px;
+  }
+  .auth-l h1 {
+    font-size: 1.7rem;
+  }
 }
 
-/* Mobile (<= 320px) */
-@media (max-width: 320px) {
-  .role-chip { display: none; }
-  .who { display: none; }
-  .topbar { gap: 4px; padding: 0 8px; }
-  .brand b { display: none; }
-  .topbar .btn.sm { padding: 5px 8px; font-size: 12px; }
+@media (max-width:640px) {
+  .role-chip {
+    display: none;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  .main {
+    padding: 16px 12px 48px;
+  }
+  .toolbar .field {
+    min-width: 100%;
+  }
+  .roles {
+    grid-template-columns: 1fr;
+  }
+  /* bảng -> thẻ */
+  table.stack thead {
+    position: absolute;
+    left: -9999px;
+  }
+  table.stack,table.stack tbody,table.stack tr,table.stack td {
+    display: block;
+    width: 100%;
+  }
+  table.stack tr {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 6px 4px;
+    background: var(--card);
+  }
+  table.stack td {
+    border: 0;
+    padding: 5px 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  table.stack td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--mut);
+    flex: none;
+  }
+  .bars .r {
+    grid-template-columns: 90px 1fr 54px;
+  }
+  .avail {
+    grid-template-columns: 70px repeat(3,1fr);
+  }
+}
+
+@media (max-width:480px) {
+  .topbar {
+    gap: 4px;
+    padding: 0 8px;
+  }
+  .brand b {
+    display: none;
+  }
+  .topbar .btn.sm {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
 }
 
 /* Người dùng bật "giảm chuyển động" trong hệ điều hành thì tắt hiệu ứng */

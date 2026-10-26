@@ -3,8 +3,15 @@ window.VL = window.VL || {};
 
 VL.path = (function() {
   const inPages = () => (document.body.dataset.base || '') === '../';
+  // Tên trang điều phối viên cũ -> tên mới (thông báo đã lưu trong LocalStorage vẫn dẫn đúng trang)
+  const RENAMED = {
+    'coordinator-resource-dashboard': 'coordinator-dashboard',
+    'coordinator-matching-board': 'coordinator-matching',
+    'coordinator-shortage-alerts': 'coordinator-shortage',
+    'coordinator-impact-summary': 'coordinator-impact'
+  };
   return {
-    page: (n) => (inPages() ? '' : 'pages/') + n + '.html',
+    page: (n) => (inPages() ? '' : 'pages/') + (RENAMED[n] || n) + '.html',
     root: (f) => (inPages() ? '../' : '') + f
   };
 })();
@@ -33,7 +40,7 @@ VL.auth = (function() {
       desc: 'Matching và theo dõi thiếu hụt',
       icon: '🧭',
       demo: 'coord@vl.demo',
-      home: 'coordinator-resource-dashboard'
+      home: 'coordinator-dashboard'
     },
     admin: {
       label: 'Quản trị viên',

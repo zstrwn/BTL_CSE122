@@ -17,10 +17,10 @@ VL.layout = (function() {
       ['organization-profile', '🏢', 'Hồ sơ tổ chức']
     ],
     coordinator: [
-      ['coordinator-resource-dashboard', '📊', 'Bảng điều khiển'],
-      ['coordinator-matching-board', '🧩', 'Bảng ghép người'],
-      ['coordinator-shortage-alerts', '🚨', 'Cảnh báo thiếu ca'],
-      ['coordinator-impact-summary', '🌱', 'Tóm tắt tác động']
+      ['coordinator-dashboard', '📊', 'Bảng điều khiển'],
+      ['coordinator-matching', '🧩', 'Bảng ghép người'],
+      ['coordinator-shortage', '🚨', 'Cảnh báo thiếu ca'],
+      ['coordinator-impact', '🌱', 'Tóm tắt tác động']
     ],
     admin: [
       ['admin-moderation', '🛡️', 'Kiểm duyệt'],

@@ -2,51 +2,36 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Bảng ghép người | VolunteerLink</title>
+  <!-- Nhớ chế độ sáng/tối đã chọn trước khi trang vẽ, để không bị nháy màu -->
   <script>document.documentElement.dataset.theme = localStorage.getItem('vl_theme') || '';</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="../responsive.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
 </head>
-<body>
-  <header class="topbar">
-    <button id="menu-btn" class="icon-btn menu-btn" type="button"
-            aria-label="Mở menu" aria-expanded="false" aria-controls="sidebar">☰</button>
-    <a class="brand" href="#">
-      <span class="logo">♥</span> <b>VolunteerLink</b>
-    </a>
-    <span class="role-chip">🧭 Điều phối viên</span>
-    <span class="sp"></span>
-    <span class="who">Nguyễn Duy Khánh</span>
-    <a id="bell" class="icon-btn bell" href="../thong-bao/index.html" aria-label="Thông báo (1 chưa đọc)">🔔<span id="bell-dot" class="dot">1</span></a>
-    <button id="theme-btn" class="icon-btn" type="button">🌓</button>
-    <button id="logout-btn" class="btn sm" type="button">Đăng xuất</button>
-  </header>
+<body data-page="coordinator-matching" data-role="coordinator" data-base="../">
+
+  <a class="skip" href="#main">Bỏ qua đến nội dung chính</a>
+
+  <!-- Đầu trang và thanh điều hướng do js/modules/layout.js tự dựng theo vai trò -->
+  <header class="topbar" id="topbar"></header>
 
   <div class="shell">
-    <nav id="sidebar" class="sidebar">
-      <ul>
-        <li><a href="../bang-dieu-khien/index.html">📊 Bảng điều khiển</a></li>
-        <li><a href="../bang-ghep-nguoi/index.html" aria-current="page">🧩 Bảng ghép người</a></li>
-        <li><a href="../canh-bao-thieu-ca/index.html">🚨 Cảnh báo thiếu ca</a></li>
-        <li><a href="../tom-tat-tac-dong/index.html">🌱 Tóm tắt tác động</a></li>
-        <li><a href="../thong-bao/index.html">🔔 Thông báo</a></li>
-        <li><a href="../cai-dat/index.html">⚙️ Cài đặt</a></li>
-      </ul>
-    </nav>
-    <div id="scrim" class="scrim"></div>
-    <main id="main" class="main">
+    <nav class="sidebar" id="sidebar" aria-label="Điều hướng chính"></nav>
+
+    <main class="main" id="main" tabindex="-1">
+
       <div class="page-h">
         <div>
           <h1>Bảng ghép người</h1>
           <p class="mut">Chọn ca cần người, xem ứng viên xếp hạng và xếp trực tiếp hoặc nhờ AI gợi ý.</p>
         </div>
       </div>
+
       <!-- Bộ lọc và nhờ hỗ trợ từ AI -->
-      <form id="filter-form" class="toolbar card">
+      <form id="filter-form" class="toolbar card" role="search">
         <div class="field grow">
           <label for="search-input">Lọc ca</label>
           <input id="search-input" name="q" type="search" placeholder="Tên hoạt động">
@@ -55,47 +40,31 @@
       </form>
 
       <div class="cols">
-        <section id="shift-list"></section>
-        <section id="detail" class="card"></section>
+        <section id="shift-list" aria-label="Danh sách ca cần người"></section>
+        <section id="detail" class="card" aria-live="polite"></section>
       </div>
 
-      <section id="ai-root" class="ai-root"></section>
+      <!-- Kết quả AI-1 (JavaScript vẽ) -->
+      <section id="ai-root" class="ai-root" style="margin-top:14px" aria-label="Kết quả AI"></section>
+
     </main>
   </div>
-  <dialog id="weight-dialog" class="modal">
-    <form id="weight-form" method="dialog">
-      <div class="modal-h">
-        <h2>Điều chỉnh trọng số</h2>
-        <button type="submit" value="cancel" class="icon-btn">✕</button>
-      </div>
-      <div class="modal-b">
-        <div class="field">
-          <label for="w-skill">Kỹ năng (%)</label>
-          <input id="w-skill" name="skill" type="range" min="0" max="100" value="60">
-        </div>
-        <div class="field">
-          <label for="w-time">Lịch rảnh (%)</label>
-          <input id="w-time" name="time" type="range" min="0" max="100" value="30">
-        </div>
-        <div class="field">
-          <label for="w-exp">Kinh nghiệm (%)</label>
-          <input id="w-exp" name="exp" type="range" min="0" max="100" value="10">
-        </div>
-      </div>
-      <div class="modal-f">
-        <button type="submit" value="cancel" class="btn ghost">Hủy</button>
-        <button type="submit" value="ok" class="btn primary">Tính lại</button>
-      </div>
-    </form>
-  </dialog>
-  <div id="toast-region"></div>
-  <script src="js/data.js"></script>
-  <script src="js/state.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/matching.js"></script>
-  <script src="js/render.js"></script>
-  <script src="js/ai.js"></script>
-  <script src="js/layout.js"></script>
-  <script src="js/main.js"></script>
+
+  <!-- Thông báo nhỏ (toast) -->
+  <div id="toast-region" aria-live="polite"></div>
+
+  <!-- Thứ tự nạp quan trọng: file sau dùng được những gì file trước đã khai báo -->
+  <script src="../assets/data/seed.js"></script>
+  <script src="../js/modules/utils.js"></script>
+  <script src="../js/modules/store.js"></script>
+  <script src="../js/modules/api.js"></script>
+  <script src="../js/modules/validators.js"></script>
+  <script src="../js/modules/ui.js"></script>
+  <script src="../js/modules/auth.js"></script>
+  <script src="../js/modules/layout.js"></script>
+  <script src="../js/modules/queries.js"></script>
+  <script src="../js/modules/ai.js"></script>
+  <script src="../js/modules/coordinator-matching.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>
