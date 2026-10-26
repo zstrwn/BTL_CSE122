@@ -1,18 +1,76 @@
 <!doctype html>
-<html lang="vi"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nhật ký hệ thống | VolunteerLink</title>
-<script>document.documentElement.dataset.theme=localStorage.getItem('vl_theme')||''</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/responsive.css"></head>
-<body data-page="admin-audit-log" data-role="admin" data-base="../">
-<a class="skip" href="#main">Bỏ qua đến nội dung chính</a>
-<header class="topbar" id="topbar"></header>
-<div class="shell"><nav class="sidebar" id="sidebar" aria-label="Điều hướng chính"></nav>
-<main class="main" id="main" tabindex="-1">
-<div class="page-h"><div><h1>Nhật ký hệ thống</h1><p class="mut">Mọi thao tác quan trọng đều được ghi lại để truy vết.</p></div><button id="export" class="btn" type="button">Xuất CSV</button></div>
-<form id="flt" class="toolbar card" role="search"><div class="field grow"><label for="q">Tìm kiếm</label><input id="q" name="q" type="search" placeholder="Hành động hoặc đối tượng"></div><div class="field"><label for="actor">Người thực hiện</label><select id="actor" name="actor"></select></div><div class="field"><label for="from">Từ ngày</label><input id="from" name="from" type="date"></div><div class="field"><label for="to">Đến ngày</label><input id="to" name="to" type="date"></div></form><section id="list" aria-live="polite" aria-label="Kết quả"></section>
-</main></div>
-<div id="toast-region" aria-live="polite"></div>
-<script src="../assets/data/seed.js"></script><script src="../js/modules/utils.js"></script><script src="../js/modules/store.js"></script><script src="../js/modules/api.js"></script><script src="../js/modules/validators.js"></script><script src="../js/modules/ui.js"></script><script src="../js/modules/auth.js"></script><script src="../js/modules/layout.js"></script><script src="../js/modules/queries.js"></script><script src="../js/modules/ai.js"></script><script src="../js/modules/admin-audit-log.js"></script>
-<script src="../js/main.js"></script></body></html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Nhật ký hệ thống | VolunteerLink</title>
+
+    <script>
+      document.documentElement.dataset.theme = localStorage.getItem('vl_theme') || '';
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+  </head>
+
+  <body data-page="admin-audit-log" data-role="admin" data-base="../">
+    <a class="skip" href="#main">Bỏ qua đến nội dung chính</a>
+
+    <header class="topbar" id="topbar"></header>
+
+    <div class="shell">
+      <nav class="sidebar" id="sidebar" aria-label="Điều hướng chính"></nav>
+
+      <main class="main" id="main" tabindex="-1">
+        <div class="page-h">
+          <div>
+            <h1>Nhật ký hệ thống</h1>
+            <p class="mut">Mọi thao tác quan trọng đều được ghi lại để truy vết.</p>
+          </div>
+          <button id="export" class="btn" type="button">Xuất CSV</button>
+        </div>
+
+        <form id="flt" class="toolbar card" role="search">
+          <div class="field grow">
+            <label for="q">Tìm kiếm</label>
+            <input id="q" name="q" type="search" placeholder="Hành động hoặc đối tượng">
+          </div>
+
+          <div class="field">
+            <label for="actor">Người thực hiện</label>
+            <select id="actor" name="actor"></select>
+          </div>
+
+          <div class="field">
+            <label for="from">Từ ngày</label>
+            <input id="from" name="from" type="date">
+          </div>
+
+          <div class="field">
+            <label for="to">Đến ngày</label>
+            <input id="to" name="to" type="date">
+          </div>
+        </form>
+
+        <section id="list" aria-live="polite" aria-label="Danh sách nhật ký hệ thống"></section>
+      </main>
+    </div>
+
+    <div id="toast-region" aria-live="polite"></div>
+
+    <script src="../assets/data/seed.js"></script>
+    <script src="../js/modules/utils.js"></script>
+    <script src="../js/modules/store.js"></script>
+    <script src="../js/modules/api.js"></script>
+    <script src="../js/modules/validators.js"></script>
+    <script src="../js/modules/ui.js"></script>
+    <script src="../js/modules/auth.js"></script>
+    <script src="../js/modules/layout.js"></script>
+    <script src="../js/modules/queries.js"></script>
+    <script src="../js/modules/ai.js"></script>
+    <script src="../js/modules/admin-audit-log.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
