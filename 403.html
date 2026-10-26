@@ -1,12 +1,49 @@
 <!doctype html>
-<html lang="vi"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Bạn không có quyền truy cập | VolunteerLink</title>
-<script>document.documentElement.dataset.theme=localStorage.getItem('vl_theme')||''</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css"></head>
-<body data-page="403" data-base="">
-<main class="land-hero" id="main"><p style="font-size:64px;margin:0" aria-hidden="true">🚫</p><h1>Bạn không có quyền truy cập</h1><p class="mut">Trang này dành cho vai trò khác. Hãy đăng nhập đúng vai trò hoặc quay lại trang của bạn.</p><p><a class="btn primary" href="login.html">Về trang đăng nhập</a> <a class="btn" href="index.html">Trang chủ</a></p></main>
-<div id="toast-region" aria-live="polite"></div>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Bạn không có quyền truy cập | VolunteerLink</title>
+    <script>document.documentElement.dataset.theme = localStorage.getItem('vl_theme') || '';</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f4f7f5; --card: #ffffff; --ink: #17261f; --mut: #5b6d64; --line: #dde8e2; --pri: #1b7f5f; --pri-dark: #13624a; --shadow: 0 18px 34px rgba(20, 40, 30, 0.08);
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        min-height: 100vh; display:grid; place-items:center; background: linear-gradient(180deg, #f7faf8 0%, #f3f6f4 100%); color: var(--ink); font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+      }
+      .status-box {
+        width: min(760px, calc(100vw - 32px)); background: var(--card); border:1px solid var(--line); border-radius:28px; box-shadow: var(--shadow); text-align:center; padding: clamp(28px, 7vw, 60px) clamp(20px, 5vw, 56px);
+      }
+      .emoji { font-size: clamp(3rem, 9vw, 5rem); margin-bottom: 12px; }
+      h1 { margin: 0 0 14px; font-family:"Fraunces", Georgia, serif; font-size: clamp(2.1rem, 4vw, 3rem); }
+      .mut { color: var(--mut); font-size:1.04rem; }
+      .actions { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:24px; }
+      .btn {
+        display:inline-flex; align-items:center; justify-content:center; padding:11px 18px; border-radius:12px; font-weight:700; border:1px solid var(--line); color:var(--ink); background:#fff; text-decoration:none;
+      }
+      .btn.primary {
+        background: linear-gradient(135deg, var(--pri), var(--pri-dark)); color:#fff; border-color:transparent; box-shadow: 0 10px 22px rgba(27,127,95,0.18);
+      }
+      @media (max-width:520px) { .actions { flex-direction: column; } .actions .btn { width:100%; } }
+    </style>
+  </head>
+  <body data-page="403" data-base="">
+    <main class="status-box" id="main">
+      <div class="emoji" aria-hidden="true">🚫</div>
+      <h1>Bạn không có quyền truy cập</h1>
+      <p class="mut">Trang này dành cho vai trò khác. Hãy quay lại trang chính hoặc đăng nhập bằng tài khoản phù hợp.</p>
+      <div class="actions">
+        <a class="btn primary" href="index.html">Về trang chủ</a>
+        <a class="btn" href="login.html">Đăng nhập</a>
+      </div>
+    </main>
 
-<script src="js/main.js"></script></body></html>
+    <div id="toast-region" aria-live="polite"></div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

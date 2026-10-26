@@ -1,16 +1,129 @@
 <!doctype html>
-<html lang="vi"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Đăng nhập | VolunteerLink</title>
-<script>document.documentElement.dataset.theme=localStorage.getItem('vl_theme')||''</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css"></head>
-<body data-page="login" data-base="">
-<main class="auth"><section class="auth-l"><a class="brand" href="index.html" style="color:#fff"><span class="logo" style="background:#fff;color:#1b7f5f" aria-hidden="true">♥</span><b style="font-size:18px">VolunteerLink</b></a><h1>Mỗi giờ bạn trao đi đều có thể tạo nên thay đổi.</h1><p>Một nền tảng, bốn vai trò: chọn vai trò ngay khi đăng nhập để vào đúng không gian làm việc của bạn.</p><p style="opacity:.8">Bản mẫu giao diện – dữ liệu giả lập lưu ở trình duyệt, không cần máy chủ.</p></section>
-<section class="auth-r"><form id="lf" class="auth-form" novalidate><h2>Đăng nhập</h2><p class="mut">Chọn vai trò – tài khoản demo được điền sẵn (mật khẩu 123456).</p><fieldset class="roles" id="roles-box"><legend>Bạn là ai?</legend></fieldset>
-<div class="field" style="margin-top:14px"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username"></div><div class="field"><label for="password">Mật khẩu</label><input id="password" name="password" type="password" autocomplete="current-password"></div>
-<div id="form-err" class="err" role="alert"></div><button id="go" class="btn primary" type="submit" style="width:100%;padding:12px;margin-top:6px">Đăng nhập</button>
-<p style="margin-top:14px"><a href="forgot-password.html">Quên mật khẩu?</a> · <a href="register.html">Tạo tài khoản</a></p></form></section></main>
-<div id="toast-region" aria-live="polite"></div>
-<script src="assets/data/seed.js"></script><script src="js/modules/utils.js"></script><script src="js/modules/store.js"></script><script src="js/modules/api.js"></script><script src="js/modules/validators.js"></script><script src="js/modules/ui.js"></script><script src="js/modules/auth.js"></script><script src="js/modules/shared.js"></script>
-<script src="js/main.js"></script></body></html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Đăng nhập | VolunteerLink</title>
+    <script>document.documentElement.dataset.theme = localStorage.getItem('vl_theme') || '';</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f4f7f5; --card: #ffffff; --ink: #17261f; --mut: #5b6d64; --line: #dde8e2; --pri: #1b7f5f; --pri-dark: #13624a; --pri-soft: #eaf7f1; --shadow: 0 18px 34px rgba(20, 40, 30, 0.08);
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        min-height: 100vh; background: linear-gradient(180deg, #f7faf8 0%, #f3f6f4 100%); color: var(--ink); font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+      }
+      a { text-decoration: none; }
+      .auth-page {
+        min-height: 100vh; display:grid; grid-template-columns: 1.06fr 1fr; background:var(--bg);
+      }
+      .auth-side {
+        position:relative; background: linear-gradient(135deg, #0f5a43, #1b7f5f 58%, #2ea57f); color:#fff; padding: clamp(28px, 5vw, 60px);
+        display:flex; flex-direction:column; justify-content:space-between; overflow:hidden;
+      }
+      .auth-side::after {
+        content:""; position:absolute; width:380px; height:380px; right:-110px; bottom:-110px; background: rgba(255,255,255,0.08); border-radius:50%;
+      }
+      .brand { display:flex; align-items:center; gap:10px; color:#fff; font-weight:700; position:relative; z-index:1; }
+      .logo { width:34px;height:34px;border-radius:12px; display:grid;place-items:center; background:#fff; color:var(--pri); }
+      .copy { position:relative; z-index:1; max-width:500px; }
+      h1 { font-family: "Fraunces", Georgia, serif; font-size: clamp(2.3rem, 5vw, 3.7rem); line-height:1.08; margin:0 0 14px; color:#fff; }
+      .copy p { color: rgba(255,255,255,0.9); font-size:1.06rem; }
+      .info-pills { display:flex; flex-wrap:wrap; gap:10px; position:relative; z-index:1; }
+      .pill { padding:8px 12px; border-radius:999px; background: rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.22); font-weight:600; }
+      .auth-panel { display:grid; place-items:center; padding:28px 18px; }
+      .auth-card {
+        width:min(100%, 460px); background:#fff; border:1px solid var(--line); border-radius:28px; box-shadow: var(--shadow); padding: clamp(24px, 4vw, 34px);
+      }
+      h2 { margin: 0 0 8px; font-family:"Fraunces", Georgia, serif; font-size: clamp(1.9rem, 3vw, 2.4rem); }
+      .mut { color: var(--mut); }
+      .auth-form { margin-top:18px; }
+      .roles {
+        display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; border:0; padding:0; margin:0;
+      }
+      .roles legend { font-weight:700; margin-bottom:8px; }
+      .role { position:relative; }
+      .role input { position:absolute; opacity:0; }
+      .role label {
+        display:flex; align-items:center; justify-content:center; height:52px; margin:0; border:1px solid var(--line); border-radius:12px; background: #f9fbfa; font-weight:700; cursor:pointer; transition:.2s ease;
+      }
+      .role input:checked + label { background: var(--pri-soft); border-color: var(--pri); color: var(--pri-dark); }
+      .field { margin-bottom:14px; }
+      label { display:block; margin-bottom:7px; font-weight:700; }
+      input { width:100%; border:1px solid var(--line); background:#fff; border-radius:12px; padding:11px 12px; font:inherit; }
+      input:focus { outline:none; border-color:var(--pri); box-shadow:0 0 0 3px rgba(27,127,95,0.12); }
+      .err { min-height:20px; color:#c0392b; font-size:13px; margin-top:6px; }
+      .btn {
+        display:inline-flex; align-items:center; justify-content:center; width:100%; border:0; border-radius:12px; padding:12px 16px; font-weight:700; cursor:pointer; background: linear-gradient(135deg, var(--pri), var(--pri-dark)); color:#fff; box-shadow: 0 10px 22px rgba(27,127,95,0.18);
+      }
+      .form-link { text-align:center; margin-top:18px; color:var(--mut); }
+      .form-link a { color: var(--pri); font-weight:700; }
+      @media (max-width: 900px) { .auth-page { grid-template-columns: 1fr; } .auth-side { min-height: 260px; } }
+      @media (max-width: 520px) { .roles { grid-template-columns: 1fr; } .auth-card { border-radius: 22px; } }
+    </style>
+  </head>
+  <body data-page="login" data-base="">
+    <main class="auth-page">
+      <section class="auth-side" aria-label="Thông tin nhà phát triển">
+        <div class="brand" href="index.html" aria-label="Về trang chủ">
+          <span class="logo" aria-hidden="true">♥</span>
+          <b>VolunteerLink</b>
+        </div>
+
+        <div class="copy">
+          <h1>Chào mừng bạn quay lại</h1>
+          <p>Đăng nhập để tiếp tục quản lý dự án, theo dõi hoạt động và kết nối với các cơ hội tình nguyện phù hợp.</p>
+        </div>
+
+        <div class="info-pills" aria-label="Các điểm nổi bật">
+          <span class="pill">Dễ dùng</span>
+          <span class="pill">An toàn</span>
+          <span class="pill">Kết nối cộng đồng</span>
+        </div>
+      </section>
+
+      <section class="auth-panel">
+        <div class="auth-card">
+          <h2>Đăng nhập</h2>
+          <p class="mut">Chọn vai trò – tài khoản demo được điền sẵn (mật khẩu 123456).</p>
+
+          <form id="lf" class="auth-form" novalidate>
+            <fieldset class="roles" id="roles-box" aria-label="Chọn vai trò">
+              <legend>Vai trò của bạn</legend>
+            </fieldset>
+
+            <div class="field" style="margin-top: 16px;">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="username" />
+            </div>
+
+            <div class="field">
+              <label for="password">Mật khẩu</label>
+              <input id="password" name="password" type="password" autocomplete="current-password" />
+            </div>
+
+            <div id="form-err" class="err" role="alert"></div>
+            <button id="go" class="btn" type="submit">Đăng nhập</button>
+
+            <p class="form-link">
+              <a href="forgot-password.html">Quên mật khẩu?</a>
+              ·
+              <a href="register.html">Tạo tài khoản</a>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast-region" aria-live="polite"></div>
+    <script src="assets/data/seed.js"></script>
+    <script src="js/modules/utils.js"></script>
+    <script src="js/modules/store.js"></script>
+    <script src="js/modules/api.js"></script>
+    <script src="js/modules/validation.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
