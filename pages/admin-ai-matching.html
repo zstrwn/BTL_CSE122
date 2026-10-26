@@ -7,22 +7,52 @@
 <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/responsive.css"></head>
 <body data-page="admin-ai-matching" data-role="admin" data-base="../">
 <a class="skip" href="#main">Bỏ qua đến nội dung chính</a>
-<header class="topbar" id="topbar"></header>
-<div class="shell"><nav class="sidebar" id="sidebar" aria-label="Điều hướng chính"></nav>
+<header class="topbar" id="topbar">
+</header>
+<div class="shell">
+  <nav class="sidebar" id="sidebar" aria-label="Điều hướng chính"></nav>
 <main class="main" id="main" tabindex="-1">
-<div class="page-h"><div><h1>AI gợi ý ứng viên phù hợp</h1><p class="mut">AI-1 · Volunteer Matcher: ghép kỹ năng và lịch rảnh của tình nguyện viên với yêu cầu của chiến dịch.</p></div></div>
+<div class="page-h">
+  <div>
+    <h1>AI gợi ý ứng viên phù hợp</h1>
+    <p class="mut">AI-1 · Volunteer Matcher: ghép kỹ năng và lịch rảnh của tình nguyện viên với yêu cầu của chiến dịch.</p>
+  </div>
+</div>
 <div class="cols">
-<form id="aiForm" class="card" novalidate><h2>Dữ liệu đầu vào</h2>
-<fieldset class="field" style="border:0;padding:0;margin:0 0 12px"><legend style="font-weight:600;margin-bottom:6px">Kỹ năng yêu cầu</legend><div class="checks">
-<label><input type="checkbox" name="skills" value="Truyền thông" checked> Truyền thông</label>
-<label><input type="checkbox" name="skills" value="Dạy học" checked> Dạy học</label>
-<label><input type="checkbox" name="skills" value="Sơ cứu"> Sơ cứu</label>
-<label><input type="checkbox" name="skills" value="Sự kiện"> Sự kiện</label>
-<label><input type="checkbox" name="skills" value="Hậu cần"> Hậu cần</label></div></fieldset>
-<div class="field"><label for="timeReq">Thời gian diễn ra</label><select id="timeReq" name="timeReq"><option>Cuối tuần</option><option>Các ngày trong tuần</option><option>Buổi tối</option></select></div>
+<form id="aiForm" class="card" novalidate>
+  <h2>Dữ liệu đầu vào</h2>
+<fieldset class="field" style="border:0;padding:0;margin:0 0 12px">
+  <legend style="font-weight:600;margin-bottom:6px">Kỹ năng yêu cầu</legend><div class="checks">
+<label>
+  <input type="checkbox" name="skills" value="Truyền thông" checked> Truyền thông
+</label>
+<label>
+  <input type="checkbox" name="skills" value="Dạy học" checked> Dạy học
+</label>
+<label>
+  <input type="checkbox" name="skills" value="Sơ cứu"> Sơ cứu
+</label>
+<label>
+  <input type="checkbox" name="skills" value="Sự kiện"> Sự kiện
+</label>
+<label>
+  <input type="checkbox" name="skills" value="Hậu cần"> Hậu cần
+</label>
+  </div>
+</fieldset>
+<div class="field">
+  <label for="timeReq">Thời gian diễn ra</label>
+  <select id="timeReq" name="timeReq"><option>Cuối tuần</option>
+    <option>Các ngày trong tuần</option>
+    <option>Buổi tối</option>
+  </select>
+</div>
 <div id="ai-err" class="err" role="alert"></div>
 <button id="btn-run-ai" class="btn primary" type="submit" style="width:100%">✨ Gợi ý ứng viên phù hợp</button></form>
-<section class="card" aria-live="polite" aria-label="Kết quả AI"><h2>Kết quả AI</h2><div id="ai-out"></div></section>
+<section class="card" aria-live="polite" aria-label="Kết quả AI">
+  <h2>Kết quả AI</h2>
+  <div id="ai-out"></div>
+</section>
 </div>
 </main></div>
 <div id="toast-region" aria-live="polite"></div>
